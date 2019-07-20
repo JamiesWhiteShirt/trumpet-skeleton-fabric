@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "com.jamieswhiteshirt.trumpetskeleton.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "ParrotEntityAccessor",
+    "WeightedPicker$EntryAccessor"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

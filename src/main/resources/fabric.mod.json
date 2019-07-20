@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "trumpet-skeleton",
+  "version": "${version}",
+  "name": "Trumpet Skeleton",
+  "description": "The sound of trumpets echoes through the night...",
+  "authors": [
+    "JamiesWhiteShirt"
+  ],
+  "contact": {
+    "sources": "https://github.com/JamiesWhiteShirt/trumpet-skeleton-fabric"
+  },
+  "license": "MIT",
+  "icon": "assets/trumpet-skeleton/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.jamieswhiteshirt.trumpetskeleton.TrumpetSkeleton"
+    ]
+  },
+  "mixins": [
+    "mixins.trumpet-skeleton.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.4.0",
+    "fabric": "*"
+  }
+}

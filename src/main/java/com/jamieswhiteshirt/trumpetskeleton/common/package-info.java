@@ -1,0 +1,4 @@
+@ParametersAreNonnullByDefault
+package com.jamieswhiteshirt.trumpetskeleton.common;
+
+import javax.annotation.ParametersAreNonnullByDefault;
