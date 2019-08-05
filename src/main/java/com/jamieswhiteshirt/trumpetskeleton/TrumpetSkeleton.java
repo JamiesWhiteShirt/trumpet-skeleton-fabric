@@ -1,6 +1,5 @@
 package com.jamieswhiteshirt.trumpetskeleton;
 
-import com.google.common.collect.Lists;
 import com.jamieswhiteshirt.trumpetskeleton.common.entity.TrumpetSkeletonEntityTypes;
 import com.jamieswhiteshirt.trumpetskeleton.common.item.TrumpetSkeletonItems;
 import com.jamieswhiteshirt.trumpetskeleton.common.sound.TrumpetSkeletonSoundEvents;
@@ -24,7 +23,7 @@ import java.util.function.Consumer;
 public class TrumpetSkeleton implements ModInitializer {
     public static final Logger LOGGER = LogManager.getLogger("trumpet-skeleton");
 
-    private static double relativeSpawnRate = 0.05D;
+    private static double relativeSpawnWeight = 0.05D;
 
     @Override
     public void onInitialize() {
@@ -35,7 +34,7 @@ public class TrumpetSkeleton implements ModInitializer {
         ParrotEntityAccessor.trumpetskeleton$getMobSounds().put(TrumpetSkeletonEntityTypes.TRUMPET_SKELETON, TrumpetSkeletonSoundEvents.ENTITY_PARROT_IMITATE_TRUMPET_SKELETON);
 
         Properties configuration = new Properties();
-        configuration.setProperty("relativeSpawnRate", String.valueOf(relativeSpawnRate));
+        configuration.setProperty("relativeSpawnWeight", String.valueOf(relativeSpawnWeight));
         File configurationFile = new File(FabricLoader.getInstance().getConfigDirectory(), "trumpet-skeleton.properties");
 
         if (configurationFile.exists()) {
@@ -54,16 +53,16 @@ public class TrumpetSkeleton implements ModInitializer {
             }
         }
 
-        String relativeSpawnRateString = configuration.getProperty("relativeSpawnRate");
+        String relativeSpawnRateString = configuration.getProperty("relativeSpawnWeight");
         try {
-            relativeSpawnRate = Double.parseDouble(relativeSpawnRateString);
+            relativeSpawnWeight = Double.parseDouble(relativeSpawnRateString);
         } catch (NumberFormatException e) {
             LOGGER.error("Error processing configuration file \"" + configurationFile + "\".");
-            LOGGER.error("Expected configuration value for relativeSpawnRate to be a number, found \"" + relativeSpawnRateString + "\".");
-            LOGGER.error("Using default value \"" + relativeSpawnRate + "\" instead.");
+            LOGGER.error("Expected configuration value for relativeSpawnWeight to be a number, found \"" + relativeSpawnRateString + "\".");
+            LOGGER.error("Using default value \"" + relativeSpawnWeight + "\" instead.");
         }
 
-        if (relativeSpawnRate > 0) {
+        if (relativeSpawnWeight > 0) {
             addRegistryProcessor(Registry.BIOME, biome -> {
                 List<Biome.SpawnEntry> spawnList = biome.getEntitySpawnList(EntityCategory.MONSTER);
                 int skeletonWeight = 0;
@@ -74,7 +73,7 @@ public class TrumpetSkeleton implements ModInitializer {
                     }
                 }
                 if (skeletonWeight > 0) {
-                    int weight = (int) Math.ceil(skeletonWeight * relativeSpawnRate);
+                    int weight = (int) Math.ceil(skeletonWeight * relativeSpawnWeight);
                     spawnList.add(new Biome.SpawnEntry(TrumpetSkeletonEntityTypes.TRUMPET_SKELETON, weight, 1, 1));
                 }
             });
