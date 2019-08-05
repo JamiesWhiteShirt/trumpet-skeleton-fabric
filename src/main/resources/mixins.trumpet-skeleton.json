@@ -4,6 +4,7 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "ParrotEntityAccessor",
+    "SpawnRestrictionAccessor",
     "WeightedPicker$EntryAccessor"
   ],
   "client": [

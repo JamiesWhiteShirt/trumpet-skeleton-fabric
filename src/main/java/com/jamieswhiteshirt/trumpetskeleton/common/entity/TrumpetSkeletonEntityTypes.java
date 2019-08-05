@@ -1,13 +1,13 @@
 package com.jamieswhiteshirt.trumpetskeleton.common.entity;
 
 import com.jamieswhiteshirt.trumpetskeleton.common.entity.mob.TrumpetSkeletonEntity;
+import com.jamieswhiteshirt.trumpetskeleton.mixin.SpawnRestrictionAccessor;
 import net.fabricmc.fabric.api.entity.FabricEntityTypeBuilder;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityCategory;
-import net.minecraft.entity.EntityDimensions;
-import net.minecraft.entity.EntityType;
+import net.minecraft.entity.*;
+import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.Heightmap;
 
 public class TrumpetSkeletonEntityTypes {
     public static final EntityType<TrumpetSkeletonEntity> TRUMPET_SKELETON = register("trumpet_skeleton", FabricEntityTypeBuilder.create(EntityCategory.MONSTER, TrumpetSkeletonEntity::new).size(EntityDimensions.changing(0.6F, 1.99F)));
@@ -20,5 +20,9 @@ public class TrumpetSkeletonEntityTypes {
         return Registry.register(Registry.ENTITY_TYPE, id, builder.build());
     }
 
-    public static void init() { }
+    public static void init() {
+        // We have to forcibly load this class first. Yup.
+        SpawnRestriction.class.getName();
+        SpawnRestrictionAccessor.trumpetskeleton$setRestrictions(TRUMPET_SKELETON, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HostileEntity::method_20680);
+    }
 }
