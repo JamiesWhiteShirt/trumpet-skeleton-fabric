@@ -8,7 +8,9 @@
     "JamiesWhiteShirt"
   ],
   "contact": {
-    "sources": "https://github.com/JamiesWhiteShirt/trumpet-skeleton-fabric"
+    "sources": "https://github.com/JamiesWhiteShirt/trumpet-skeleton-fabric",
+    "issues": "https://github.com/JamiesWhiteShirt/trumpet-skeleton-fabric/issues",
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/trumpet-skeleton-fabric"
   },
   "license": "MIT",
   "icon": "assets/trumpet-skeleton/icon.png",
