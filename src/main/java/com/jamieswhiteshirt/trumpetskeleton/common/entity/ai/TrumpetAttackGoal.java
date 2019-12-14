@@ -65,7 +65,7 @@ public class TrumpetAttackGoal<T extends HostileEntity> extends Goal {
     public void tick() {
         LivingEntity target = actor.getTarget();
         if (target != null) {
-            double squaredDistance = actor.squaredDistanceTo(target.x, target.getBoundingBox().minY, target.z);
+            double squaredDistance = actor.squaredDistanceTo(target.getX(), target.getY(), target.getZ());
             boolean canSeeTarget = actor.getVisibilityCache().canSee(target);
             boolean boolean_2 = seeCounter > 0;
             if (canSeeTarget != boolean_2) {
@@ -87,11 +87,11 @@ public class TrumpetAttackGoal<T extends HostileEntity> extends Goal {
             }
 
             if (strafeChangeTimer >= 20) {
-                if (actor.getRand().nextFloat() < 0.3D) {
+                if (actor.getRandom().nextFloat() < 0.3D) {
                     strafeLeft = !strafeLeft;
                 }
 
-                if (actor.getRand().nextFloat() < 0.3D) {
+                if (actor.getRandom().nextFloat() < 0.3D) {
                     strafeBack = !strafeBack;
                 }
 
@@ -117,7 +117,7 @@ public class TrumpetAttackGoal<T extends HostileEntity> extends Goal {
                 }
             } else if (--cooldown <= 0 && seeCounter >= -60) {
                 actor.setCurrentHand(ProjectileUtil.getHandPossiblyHolding(actor, TrumpetSkeletonItems.TRUMPET));
-                cooldown = actor.getRand().nextInt(attackInterval);
+                cooldown = actor.getRandom().nextInt(attackInterval);
             }
 
         }

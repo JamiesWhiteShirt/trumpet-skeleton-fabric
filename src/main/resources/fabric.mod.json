@@ -18,13 +18,16 @@
   "entrypoints": {
     "main": [
       "com.jamieswhiteshirt.trumpetskeleton.TrumpetSkeleton"
+    ],
+    "client": [
+      "com.jamieswhiteshirt.trumpetskeleton.client.TrumpetSkeletonClient"
     ]
   },
   "mixins": [
     "mixins.trumpet-skeleton.json"
   ],
   "depends": {
-    "fabricloader": ">=0.4.0",
+    "fabricloader": ">=0.7.0",
     "fabric": "*"
   }
 }

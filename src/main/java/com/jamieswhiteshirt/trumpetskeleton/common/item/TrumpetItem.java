@@ -19,7 +19,7 @@ public class TrumpetItem extends Item {
 
     @Override
     public UseAction getUseAction(ItemStack stack) {
-        return UseAction.EAT;
+        return UseAction.NONE;
     }
 
     @Override

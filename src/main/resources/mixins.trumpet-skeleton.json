@@ -4,10 +4,11 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "ParrotEntityAccessor",
-    "SpawnRestrictionMixin",
+    "SpawnRestrictionAccessor",
     "WeightedPicker$EntryAccessor"
   ],
   "client": [
+    "client.HeldItemRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1

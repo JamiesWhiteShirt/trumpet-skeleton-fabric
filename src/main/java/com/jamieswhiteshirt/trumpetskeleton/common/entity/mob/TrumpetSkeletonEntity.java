@@ -43,7 +43,7 @@ public class TrumpetSkeletonEntity extends SkeletonEntity {
     @Override
     protected void initEquipment(LocalDifficulty localDifficulty_1) {
         super.initEquipment(localDifficulty_1);
-        this.setEquippedStack(EquipmentSlot.MAINHAND, new ItemStack(TrumpetSkeletonItems.TRUMPET));
+        this.equipStack(EquipmentSlot.MAINHAND, new ItemStack(TrumpetSkeletonItems.TRUMPET));
     }
 
     @Override

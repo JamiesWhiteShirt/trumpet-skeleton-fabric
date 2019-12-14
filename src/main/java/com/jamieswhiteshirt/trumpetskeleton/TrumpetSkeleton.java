@@ -4,13 +4,17 @@ import com.jamieswhiteshirt.trumpetskeleton.common.entity.TrumpetSkeletonEntityT
 import com.jamieswhiteshirt.trumpetskeleton.common.item.TrumpetSkeletonItems;
 import com.jamieswhiteshirt.trumpetskeleton.common.sound.TrumpetSkeletonSoundEvents;
 import com.jamieswhiteshirt.trumpetskeleton.mixin.ParrotEntityAccessor;
+import com.jamieswhiteshirt.trumpetskeleton.mixin.SpawnRestrictionAccessor;
 import com.jamieswhiteshirt.trumpetskeleton.mixin.WeightedPicker$EntryAccessor;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.entity.EntityCategory;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnRestriction;
+import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.util.registry.Registry;
+import net.minecraft.world.Heightmap;
 import net.minecraft.world.biome.Biome;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -32,6 +36,7 @@ public class TrumpetSkeleton implements ModInitializer {
         TrumpetSkeletonEntityTypes.init();
 
         ParrotEntityAccessor.trumpetskeleton$getMobSounds().put(TrumpetSkeletonEntityTypes.TRUMPET_SKELETON, TrumpetSkeletonSoundEvents.ENTITY_PARROT_IMITATE_TRUMPET_SKELETON);
+        SpawnRestrictionAccessor.trumpetskeleton$register(TrumpetSkeletonEntityTypes.TRUMPET_SKELETON, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HostileEntity::canSpawnInDark);
 
         Properties configuration = new Properties();
         configuration.setProperty("relativeSpawnWeight", String.valueOf(relativeSpawnWeight));
