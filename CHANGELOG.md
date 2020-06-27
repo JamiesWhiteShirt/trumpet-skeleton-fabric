@@ -1,3 +1,7 @@
+# 1.1.2
+
+- Updated to 1.16.
+
 # 1.1.1
 
 - Updated to 1.15.
