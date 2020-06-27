@@ -5,9 +5,9 @@ import com.jamieswhiteshirt.trumpetskeleton.common.item.TrumpetSkeletonItems;
 import com.jamieswhiteshirt.trumpetskeleton.common.sound.TrumpetSkeletonSoundEvents;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.EquipmentSlot;
-import net.minecraft.entity.ProjectileUtil;
 import net.minecraft.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.entity.mob.SkeletonEntity;
+import net.minecraft.entity.projectile.ProjectileUtil;
 import net.minecraft.item.ItemStack;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.world.Difficulty;
@@ -18,11 +18,13 @@ public class TrumpetSkeletonEntity extends SkeletonEntity {
     private boolean constructed; // ugh.
     private final TrumpetAttackGoal<TrumpetSkeletonEntity> trumpetAttackGoal = new TrumpetAttackGoal<>(this, 1.0D, 40, 6.0F);
     private final MeleeAttackGoal meleeAttackGoal = new MeleeAttackGoal(this, 1.2D, false) {
+        @Override
         public void stop() {
             super.stop();
             setAttacking(false);
         }
 
+        @Override
         public void start() {
             super.start();
             setAttacking(true);

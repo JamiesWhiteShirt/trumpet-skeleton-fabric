@@ -2,9 +2,9 @@ package com.jamieswhiteshirt.trumpetskeleton.common.entity.ai;
 
 import com.jamieswhiteshirt.trumpetskeleton.common.item.TrumpetSkeletonItems;
 import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.ProjectileUtil;
 import net.minecraft.entity.ai.goal.Goal;
 import net.minecraft.entity.mob.HostileEntity;
+import net.minecraft.entity.projectile.ProjectileUtil;
 
 import java.util.EnumSet;
 

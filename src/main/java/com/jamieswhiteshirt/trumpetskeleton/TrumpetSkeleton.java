@@ -8,10 +8,12 @@ import com.jamieswhiteshirt.trumpetskeleton.mixin.SpawnRestrictionAccessor;
 import com.jamieswhiteshirt.trumpetskeleton.mixin.WeightedPicker$EntryAccessor;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.registry.RegistryEntryAddedCallback;
+import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
 import net.fabricmc.loader.api.FabricLoader;
-import net.minecraft.entity.EntityCategory;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.entity.SpawnRestriction;
+import net.minecraft.entity.mob.AbstractSkeletonEntity;
 import net.minecraft.entity.mob.HostileEntity;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.Heightmap;
@@ -37,6 +39,7 @@ public class TrumpetSkeleton implements ModInitializer {
 
         ParrotEntityAccessor.trumpetskeleton$getMobSounds().put(TrumpetSkeletonEntityTypes.TRUMPET_SKELETON, TrumpetSkeletonSoundEvents.ENTITY_PARROT_IMITATE_TRUMPET_SKELETON);
         SpawnRestrictionAccessor.trumpetskeleton$register(TrumpetSkeletonEntityTypes.TRUMPET_SKELETON, SpawnRestriction.Location.ON_GROUND, Heightmap.Type.MOTION_BLOCKING_NO_LEAVES, HostileEntity::canSpawnInDark);
+        FabricDefaultAttributeRegistry.register(TrumpetSkeletonEntityTypes.TRUMPET_SKELETON, AbstractSkeletonEntity.createAbstractSkeletonAttributes());
 
         Properties configuration = new Properties();
         configuration.setProperty("relativeSpawnWeight", String.valueOf(relativeSpawnWeight));
@@ -69,7 +72,7 @@ public class TrumpetSkeleton implements ModInitializer {
 
         if (relativeSpawnWeight > 0) {
             addRegistryProcessor(Registry.BIOME, biome -> {
-                List<Biome.SpawnEntry> spawnList = biome.getEntitySpawnList(EntityCategory.MONSTER);
+                List<Biome.SpawnEntry> spawnList = biome.getEntitySpawnList(SpawnGroup.MONSTER);
                 int skeletonWeight = 0;
                 for (Biome.SpawnEntry spawnEntry : spawnList) {
                     if (spawnEntry.type == EntityType.SKELETON) {
