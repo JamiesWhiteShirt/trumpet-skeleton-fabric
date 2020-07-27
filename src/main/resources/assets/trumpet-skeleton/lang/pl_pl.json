@@ -1,15 +1,8 @@
 {
-  "itemGroup.inmis.backpack": "Inmis",
-
-  "ui.inmis.backpack": "Plecak",
-
-  "item.inmis.baby_backpack": "Plecaczek",
-  "item.inmis.ender_pouch": "Sakiewka Endu",
-
-  "item.inmis.frayed_backpack": "Postrzępiony plecak",
-  "item.inmis.plated_backpack": "Opancerzony plaecak",
-  "item.inmis.gilded_backpack": "Pozłacany plecak",
-  "item.inmis.bejeweled_backpack": "Plecak ozdobiony klejnotami",
-  "item.inmis.withered_backpack": "Witherowy plecak",
-  "item.inmis.endless_backpack": "Nieskończony plecak"
+  "entity.trumpet-skeleton.trumpet_skeleton": "Trąbkowy szkielet",
+  "subtitles.entity.trumpet-skeleton.trumpet_skeleton.ambient": "Szkielet trąbi",
+  "subtitles.entity.parrot.imitate.trumpet_skeleton": "Papuga trąbi",
+  "subtitles.item.trumpet-skeleton.trumpet.use": "Doot doot",
+  "item.trumpet-skeleton.trumpet": "Trąbka",
+  "item.trumpet-skeleton.trumpet_skeleton_spawn_egg": "Jajo przyzywające trąbkowy szkielet"
 }
