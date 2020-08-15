@@ -9,7 +9,7 @@ import java.util.List;
 public class Scare {
     public static void scare(World world, LivingEntity user) {
         if (!world.isClient) {
-            List<LivingEntity> entities = world.getEntities(LivingEntity.class, user.getBoundingBox().expand(5.0D), EntityPredicates.VALID_ENTITY);
+            List<LivingEntity> entities = world.getEntitiesByClass(LivingEntity.class, user.getBoundingBox().expand(5.0D), EntityPredicates.VALID_ENTITY);
             for (LivingEntity spookedEntity : entities) {
                 if (spookedEntity == user) continue;
                 double deltaX = spookedEntity.getX() - user.getX() + world.random.nextDouble() - world.random.nextDouble();

@@ -3,9 +3,9 @@
   "package": "com.jamieswhiteshirt.trumpetskeleton.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "DefaultBiomeFeaturesMixin",
     "ParrotEntityAccessor",
-    "SpawnRestrictionAccessor",
-    "WeightedPicker$EntryAccessor"
+    "SpawnRestrictionAccessor"
   ],
   "client": [
     "client.HeldItemRendererMixin"
