@@ -1,3 +1,8 @@
+# 1.1.4
+
+- Updated to 1.17.
+- Fixed the trumpet sound being unexpectedly loud.
+
 # 1.1.3
 
 - Updated to 1.16.2.
