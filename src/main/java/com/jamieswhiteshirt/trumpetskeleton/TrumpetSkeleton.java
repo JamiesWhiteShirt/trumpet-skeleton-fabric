@@ -16,6 +16,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Properties;
 
 public class TrumpetSkeleton implements ModInitializer {
@@ -35,17 +37,17 @@ public class TrumpetSkeleton implements ModInitializer {
 
         Properties configuration = new Properties();
         configuration.setProperty("relativeSpawnWeight", String.valueOf(relativeSpawnWeight));
-        File configurationFile = new File(FabricLoader.getInstance().getConfigDirectory(), "trumpet-skeleton.properties");
+        Path configurationFile = FabricLoader.getInstance().getConfigDir().resolve("trumpet-skeleton.properties");
 
-        if (configurationFile.exists()) {
-            try (InputStream in = new FileInputStream(configurationFile)) {
+        if (Files.exists(configurationFile)) {
+            try (InputStream in = Files.newInputStream(configurationFile)) {
                 configuration.load(in);
                 LOGGER.info("Loaded configuration file \"" + configurationFile + "\"");
             } catch (IOException e) {
                 LOGGER.error("Could not read configuration file \"" + configurationFile + "\"", e);
             }
         } else {
-            try (OutputStream out = new FileOutputStream(configurationFile)) {
+            try (OutputStream out = Files.newOutputStream(configurationFile)) {
                 configuration.store(out, "Trumpet Skeleton configuration");
                 LOGGER.info("Generated configuration file \"" + configurationFile + "\"");
             } catch (IOException e) {

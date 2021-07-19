@@ -11,6 +11,6 @@ import net.minecraft.client.render.entity.SkeletonEntityRenderer;
 public class TrumpetSkeletonClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        EntityRendererRegistry.INSTANCE.register(TrumpetSkeletonEntityTypes.TRUMPET_SKELETON, (dispatcher, ctx) -> new SkeletonEntityRenderer(dispatcher));
+        EntityRendererRegistry.INSTANCE.register(TrumpetSkeletonEntityTypes.TRUMPET_SKELETON, SkeletonEntityRenderer::new);
     }
 }
